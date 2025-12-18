@@ -22,6 +22,7 @@ This project was developed as part of an **academic requirement**, with the obje
 - HTML / JavaScript
 
 ## Project Structure
+```bash
 college-help-desk-chatbot/
 ├── data/
 │   ├── nlu.yml
@@ -36,17 +37,18 @@ college-help-desk-chatbot/
 ├── Dockerfile
 ├── index.html
 └── README.md
-
-
+```
 
 ## Run Locally
 
+```bash
 rasa train
 rasa shell
-
+```
 
 ## Run using Docker
 
+```bash
 docker build -t college-helpdesk-chatbot .
 docker run -p 5005:5005 college-helpdesk-chatbot
 

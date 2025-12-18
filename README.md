@@ -126,12 +126,4 @@ This project fulfills academic requirements by demonstrating:
 * Use of the Rasa framework for real-world problem solving
 * Implementation of intent-based and rule-based dialogue systems
 
----
-
-## Future Enhancements
-
-* Integration with a database for dynamic responses
-* Support for multiple languages
-* Improved UI/UX for the web interface
-* Deployment on cloud platforms
 

@@ -1,0 +1,58 @@
+version: "3.1"
+
+rules:
+
+- rule: greet rule
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: goodbye rule
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: thank you rule
+  steps:
+  - intent: thank_you
+  - action: utter_thank_you
+
+- rule: admission rule
+  steps:
+  - intent: ask_admission
+  - action: utter_admission
+
+- rule: courses rule
+  steps:
+  - intent: ask_courses
+  - action: utter_courses
+
+- rule: fees rule
+  steps:
+  - intent: ask_fees
+  - action: utter_fees
+
+- rule: facilities rule
+  steps:
+  - intent: ask_facilities
+  - action: utter_facilities
+
+- rule: principal rule
+  steps:
+  - intent: ask_principal
+  - action: utter_principal
+
+- rule: contact rule
+  steps:
+  - intent: ask_contact
+  - action: utter_contact
+
+- rule: timing rule
+  steps:
+  - intent: ask_timing
+  - action: utter_timing
+
+- rule: location rule
+  steps:
+  - intent: ask_location
+  - action: utter_location

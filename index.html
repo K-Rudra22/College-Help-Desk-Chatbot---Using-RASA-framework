@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>College Help Desk Chatbot</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f0f4ff;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #chatButton {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background-color: #003366;
+      color: white;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    #chatButton:hover {
+      transform: scale(1.1);
+      background-color: #0055a5;
+    }
+
+    #chatContainer {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeInUp 0.4s ease;
+    }
+
+    #chatHeader {
+      background-color: #003366;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    #chatbox {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bot, .user {
+      margin: 6px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      max-width: 80%;
+      word-wrap: break-word;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .bot {
+      background: #e6f0ff;
+      align-self: flex-start;
+    }
+
+    .user {
+      background: #d0f0d0;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    #inputContainer {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    #userInput {
+      flex: 1;
+      padding: 8px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border 0.3s ease;
+    }
+
+    #userInput:focus {
+      border-color: #003366;
+    }
+
+    #sendButton {
+      margin-left: 8px;
+      background-color: #003366;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+
+    #sendButton:hover {
+      background-color: #0055a5;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="chatButton">🎓</button>
+
+  <div id="chatContainer">
+    <div id="chatHeader">College Help Desk Chatbot</div>
+    <div id="chatbox"></div>
+    <div id="inputContainer">
+      <input id="userInput" type="text" placeholder="Ask me about admissions, fees, courses..." onkeypress="handleKey(event)">
+      <button id="sendButton" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <script>
+    const chatButton = document.getElementById("chatButton");
+    const chatContainer = document.getElementById("chatContainer");
+    const chatbox = document.getElementById("chatbox");
+    const input = document.getElementById("userInput");
+
+    chatButton.onclick = () => {
+      if (chatContainer.style.display === "flex") {
+        chatContainer.style.display = "none";
+      } else {
+        chatContainer.style.display = "flex";
+        input.focus();
+      }
+    };
+
+    //These lines are important, don't change them
+    async function sendMessage(message = null) {
+      const text = message || input.value.trim();
+      if (!text) return;
+
+      chatbox.innerHTML += `<div class="user">${text}</div>`;
+      input.value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+
+      try {
+        const response = await fetch("http://localhost:5005/webhooks/rest/webhook", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sender: "user", message: text })
+        });
+
+        const data = await response.json();
+        data.forEach(msg => {
+          if (msg.text) {
+            chatbox.innerHTML += `<div class="bot">${msg.text}</div>`;
+          }
+        });
+        chatbox.scrollTop = chatbox.scrollHeight;
+      } catch (err) {
+        chatbox.innerHTML += `<div class="bot">⚠️ Unable to connect to the help desk server. Please try again later.</div>`;
+      }
+    }
+
+    function handleKey(e) {
+      if (e.key === "Enter") sendMessage();
+    }
+  </script>
+
+</body>
+</html>

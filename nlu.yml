@@ -1,0 +1,84 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - hello
+    - hi
+    - hey
+    - good morning
+    - good afternoon
+    - what's up
+
+- intent: goodbye
+  examples: |
+    - bye
+    - see you later
+    - goodbye
+    - take care
+
+- intent: thank_you
+  examples: |
+    - thank you
+    - thanks a lot
+    - appreciate it
+    - that was helpful
+
+- intent: ask_admission
+  examples: |
+    - how do I apply for admission?
+    - when does admission start?
+    - what is the admission process?
+    - tell me about the admission procedure
+    - when will admission forms be released?
+
+- intent: ask_courses
+  examples: |
+    - what courses are offered?
+    - list of available programs
+    - which degrees can I study here?
+    - what are the available streams?
+    - do you offer engineering?
+
+- intent: ask_fees
+  examples: |
+    - what is the fee structure?
+    - how much are the course fees?
+    - what are the tuition fees?
+    - tell me about the fees for BTech
+
+- intent: ask_facilities
+  examples: |
+    - what facilities are available?
+    - tell me about your campus
+    - do you have hostel or library?
+    - what infrastructure do you have?
+
+- intent: ask_principal
+  examples: |
+    - who is the principal?
+    - name of the college principal
+    - who heads the college?
+    - who is the dean?
+
+- intent: ask_contact
+  examples: |
+    - how can I contact the college?
+    - what is your contact number?
+    - give me the email address
+    - where can I reach the administration?
+
+- intent: ask_timing
+  examples: |
+    - what are the college timings?
+    - when does the college open?
+    - what are the class hours?
+    - what are working hours?
+
+- intent: ask_location
+  examples: |
+    - where is the college located?
+    - what’s the address?
+    - how can I reach the college?
+    - share the college location

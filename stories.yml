@@ -1,0 +1,57 @@
+version: "3.1"
+
+stories:
+
+- story: greet and help
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: admission inquiry
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_admission
+  - action: utter_admission
+
+- story: courses inquiry
+  steps:
+  - intent: ask_courses
+  - action: utter_courses
+
+- story: fees inquiry
+  steps:
+  - intent: ask_fees
+  - action: utter_fees
+
+- story: facilities inquiry
+  steps:
+  - intent: ask_facilities
+  - action: utter_facilities
+
+- story: principal inquiry
+  steps:
+  - intent: ask_principal
+  - action: utter_principal
+
+- story: contact inquiry
+  steps:
+  - intent: ask_contact
+  - action: utter_contact
+
+- story: timing inquiry
+  steps:
+  - intent: ask_timing
+  - action: utter_timing
+
+- story: location inquiry
+  steps:
+  - intent: ask_location
+  - action: utter_location
+
+- story: thank you and goodbye
+  steps:
+  - intent: thank_you
+  - action: utter_thank_you
+  - intent: goodbye
+  - action: utter_goodbye

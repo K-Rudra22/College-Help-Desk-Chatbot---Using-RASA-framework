@@ -1,0 +1,48 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_admission
+  - ask_courses
+  - ask_fees
+  - ask_facilities
+  - ask_principal
+  - ask_contact
+  - ask_timing
+  - ask_location
+  - thank_you
+
+responses:
+  utter_greet:
+    - text: "Hello! 👋 I’m your College Help Desk Assistant. How can I help you today?"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a great day ahead!"
+
+  utter_thank_you:
+    - text: "You're most welcome! 😊"
+
+  utter_admission:
+    - text: "Admissions open in June every year. You can apply online through our official college website under the 'Admissions' section."
+
+  utter_courses:
+    - text: "Our college offers programs like B.Sc, B.Com, B.A, B.Tech, and MBA."
+
+  utter_fees:
+    - text: "The fee structure varies by course. Please visit the 'Fees' page on our website or contact the admin office."
+
+  utter_facilities:
+    - text: "We have modern labs, a digital library, hostels, a canteen, Wi-Fi campus, and a sports complex."
+
+  utter_principal:
+    - text: "Our college principal is Dr. A. B. Sharma, who has been leading since 2018."
+
+  utter_contact:
+    - text: "You can reach us at +91-9876543210 or email info@college.edu."
+
+  utter_timing:
+    - text: "College hours are from 9:00 AM to 5:00 PM, Monday to Saturday."
+
+  utter_location:
+    - text: "We’re located at College Road, Mumbai, Maharashtra – 400001."

@@ -39,9 +39,8 @@ college-help-desk-chatbot/
 
 
 
-## ▶️ Run Locally
+## Run Locally
 
-```bash
 rasa train
 rasa shell
 
